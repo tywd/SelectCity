@@ -1,0 +1,1 @@
+<citylist styles='max-height:100%;' bindcitytap='cityTap'></citylist>

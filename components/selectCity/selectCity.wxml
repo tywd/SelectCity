@@ -1,0 +1,29 @@
+<!--components/selectCity.wxml-->
+<view class='city_box' style='{{styles}}'>
+      <view class='city_left'>
+          <scroll-view scroll-y style='width:100%;height:100%;' scroll-with-animation scroll-into-view='{{cityListId}}'>
+              <view class='city_locate' id='hot'>
+                  <text class='city_locate_title'>自动定位</text>
+                  <text class='city_locate_text' style='{{!locateCity&&"color:#FCB61F;"}}' data-types="locate" catchtap="cityTap">{{locateCity}}</text>
+                  <button hidden="{{ locateCity }}" class="btnlocate" type="default" size="mini"bindopensetting="locateReturn" open-type="openSetting" >点击授权定位</button>
+              </view>
+              <view class='national' data-types='national' catchtap='cityTap'>全国</view>
+              <view class='new_city'>
+                  <view class='new_city_title'>热门城市</view>
+                  <view class='new_city_box'>
+                      <text class='new_city_text' wx:for='{{newcity}}' wx:key='this' data-types='new' catchtap='cityTap' data-val='{{item}}'>{{item}}</text>
+                  </view>
+              </view>
+              <view class='city_list_box'>
+                <block wx:for='{{citylist}}' wx:key='this' wx:for-item='letterItem' wx:for-index='letterIndex'>
+                  <view class='city_first_letter' id='{{letterItem.letter}}'>{{letterItem.letter}}</view>
+                  <text class='city_name' wx:for='{{letterItem.data}}' wx:key='this' data-types='list' catchtap='cityTap' data-index='{{index}}' data-val='{{item}}'>{{item.cityName}}</text>
+                </block>
+              </view>
+          </scroll-view>
+      </view>
+      <view class='city_right'>
+          <text class='letter_item' wx:for='{{letter}}' wx:key='this' catchtap='letterTap' data-item='{{item}}'>{{item}}</text>
+      </view>
+  </view>
+
